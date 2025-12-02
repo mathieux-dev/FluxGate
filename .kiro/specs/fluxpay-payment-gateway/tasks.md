@@ -1,6 +1,10 @@
 # Implementation Plan
 
+> **Git Strategy:** Commit after completing each major task (numbered tasks like 1, 2, 3, etc.) using Conventional Commits format.
+> Example: `git commit -m "feat: implement database models and migrations"`
+
 - [x] 1. Set up project structure and core infrastructure
+  - ✅ **COMMITTED:** `feat: setup project structure and core infrastructure`
 
 
 
@@ -29,6 +33,7 @@
 - [ ]* 2.3 Write property test for entity validation
   - **Property 2: PAN/CVV storage prohibition**
   - **Validates: Requirements 1.2**
+  - 📝 **COMMIT AFTER TASK 2:** `git commit -m "feat: implement database models and migrations"`
 
 - [ ] 3. Implement encryption and cryptography services
 - [ ] 3.1 Create EncryptionService with AES-256-GCM
@@ -41,6 +46,7 @@
   - **Property 36: Provider config encryption round-trip**
   - **Property 37: Webhook secret encryption round-trip**
   - **Validates: Requirements 11.1, 11.2, 11.3**
+  - 📝 **COMMIT AFTER TASK 3:** `git commit -m "feat: implement encryption and cryptography services"`
 
 - [ ] 4. Implement HMAC signature services
 - [ ] 4.1 Create HmacSignatureService
@@ -53,6 +59,7 @@
   - **Property 16: Webhook signature round-trip**
   - **Property 23: API signature round-trip**
   - **Validates: Requirements 6.2, 8.2**
+  - 📝 **COMMIT AFTER TASK 4:** `git commit -m "feat: implement HMAC signature services"`
 
 - [ ] 5. Implement nonce store and replay protection
 - [ ] 5.1 Create NonceStore using Redis
@@ -65,6 +72,7 @@
   - **Property 20: Webhook nonce replay protection**
   - **Property 25: API nonce replay protection**
   - **Validates: Requirements 7.4, 8.4**
+  - 📝 **COMMIT AFTER TASK 5:** `git commit -m "feat: implement nonce store and replay protection"`
 
 - [ ] 6. Implement rate limiting service
 - [ ] 6.1 Create RateLimiter using Redis sliding window
@@ -78,6 +86,7 @@
   - **Property 33: Payment endpoint IP rate limit**
   - **Property 35: Rate limit window reset**
   - **Validates: Requirements 10.1, 10.2, 10.4**
+  - 📝 **COMMIT AFTER TASK 6:** `git commit -m "feat: implement rate limiting service"`
 
 - [ ] 7. Implement JWT authentication service
 - [ ] 7.1 Create JwtService with RS256 signing
@@ -100,6 +109,7 @@
   - **Property 30: Expired access token rejection**
   - **Property 31: Revoked refresh token rejection**
   - **Validates: Requirements 9.1, 9.2, 9.4, 9.5**
+  - 📝 **COMMIT AFTER TASK 7:** `git commit -m "feat: implement JWT authentication service"`
 
 - [ ] 8. Implement audit logging service
 - [ ] 8.1 Create AuditService with HMAC signing
@@ -112,6 +122,7 @@
   - **Property 38: Payment operation audit logging**
   - **Property 39: Audit log signature integrity**
   - **Validates: Requirements 12.1, 12.2, 12.3**
+  - 📝 **COMMIT AFTER TASK 8:** `git commit -m "feat: implement audit logging service"`
 
 - [ ] 9. Implement provider adapters
 - [ ] 9.1 Create IProviderAdapter interface
@@ -140,6 +151,7 @@
 - [ ]* 9.5 Write property test for provider routing
   - **Property 58: Refund provider routing**
   - **Validates: Requirements 21.1**
+  - 📝 **COMMIT AFTER TASK 9:** `git commit -m "feat: implement provider adapters (Pagar.me and Gerencianet)"`
 
 - [ ] 10. Implement payment service
 - [ ] 10.1 Create PaymentService core logic
@@ -190,6 +202,7 @@
   - **Property 60: Refund completion flow**
   - **Property 61: Partial refund arithmetic**
   - **Validates: Requirements 21.2, 21.3, 21.4**
+  - 📝 **COMMIT AFTER TASK 10:** `git commit -m "feat: implement payment service (card, PIX, boleto, refunds)"`
 
 - [ ] 11. Implement subscription service
 - [ ] 11.1 Create SubscriptionService
@@ -204,6 +217,7 @@
   - **Property 12: Subscription payment linkage**
   - **Property 13: Subscription cancellation state transition**
   - **Validates: Requirements 4.1, 4.2, 4.4**
+  - 📝 **COMMIT AFTER TASK 11:** `git commit -m "feat: implement subscription service"`
 
 - [ ] 12. Implement webhook service
 - [ ] 12.1 Create WebhookService for inbound webhooks
@@ -239,6 +253,7 @@
   - **Property 7: PIX confirmation state transition**
   - **Property 10: Boleto confirmation state transition**
   - **Validates: Requirements 2.3, 3.3**
+  - 📝 **COMMIT AFTER TASK 12:** `git commit -m "feat: implement webhook service (inbound and outbound)"`
 
 - [ ] 13. Implement API authentication middleware
 - [ ] 13.1 Create ApiKeyAuthenticationMiddleware
@@ -260,6 +275,7 @@
   - Check expiration
   - Set user context on success
   - _Requirements: 9.4_
+  - 📝 **COMMIT AFTER TASK 13:** `git commit -m "feat: implement API authentication middleware"`
 
 - [ ] 14. Implement rate limiting middleware
 - [ ] 14.1 Create RateLimitingMiddleware
@@ -282,6 +298,7 @@
   - **Property 55: Security headers presence**
   - **Property 56: Server header removal**
   - **Validates: Requirements 20.2, 20.3**
+  - 📝 **COMMIT AFTER TASK 14-15:** `git commit -m "feat: implement rate limiting and security headers middleware"`
 
 - [ ] 16. Implement antifraud service
 - [ ] 16.1 Create AntifraudService
@@ -297,6 +314,7 @@
   - **Property 44: Adaptive IP blocking**
   - **Property 45: Antifraud audit logging**
   - **Validates: Requirements 14.1, 14.2, 14.3, 14.4**
+  - 📝 **COMMIT AFTER TASK 16:** `git commit -m "feat: implement antifraud service"`
 
 - [ ] 17. Implement payment controllers
 - [ ] 17.1 Create PaymentsController
@@ -381,12 +399,14 @@
   - **Property 52: Admin MFA failure handling**
   - **Property 53: Admin token expiry**
   - **Validates: Requirements 17.1, 17.2, 17.3, 17.4**
+  - 📝 **COMMIT AFTER TASK 17-22:** `git commit -m "feat: implement all API controllers (payments, subscriptions, webhooks, auth, merchants, admin)"`
 
 - [ ] 23. Implement health check endpoint
 - [ ] 23.1 Create HealthController
   - GET /health (check database, Redis, provider connectivity)
   - Return 200 OK with status details
   - _Requirements: 19.1_
+  - 📝 **COMMIT AFTER TASK 23:** `git commit -m "feat: implement health check endpoint"`
 
 - [ ] 24. Implement reconciliation worker
 - [ ] 24.1 Create ReconciliationWorker background service
@@ -419,6 +439,7 @@
 - [ ]* 26.2 Write property test for sandbox routing
   - **Property 54: Sandbox routing**
   - **Validates: Requirements 18.2**
+  - 📝 **COMMIT AFTER TASK 24-26:** `git commit -m "feat: implement background workers (reconciliation, webhook retry) and sandbox mode"`
 
 - [ ] 27. Configure OpenTelemetry and logging
 - [ ] 27.1 Set up OpenTelemetry tracing
@@ -430,6 +451,7 @@
   - Log to console (JSON format) and Logflare
   - Implement sensitive data masking
   - _Requirements: 22.2_
+  - 📝 **COMMIT AFTER TASK 27:** `git commit -m "feat: configure OpenTelemetry tracing and structured logging"`
 
 - [ ] 28. Set up CI/CD pipeline
 - [ ] 28.1 Create GitHub Actions workflow
@@ -439,9 +461,11 @@
   - Run dependency vulnerability scanning
   - Build Docker image on main branch
   - _Requirements: 23.1, 23.2, 23.3, 23.4_
+  - 📝 **COMMIT AFTER TASK 28:** `git commit -m "ci: setup GitHub Actions pipeline with tests, SAST, and Docker build"`
 
 - [ ] 29. Final checkpoint - Ensure all tests pass
   - Run all unit tests, property tests, and integration tests
   - Verify no compilation errors or warnings
   - Ensure all critical paths are covered
   - Ask the user if questions arise
+  - 📝 **FINAL COMMIT:** `git commit -m "chore: final checkpoint - all tests passing and project complete"`
