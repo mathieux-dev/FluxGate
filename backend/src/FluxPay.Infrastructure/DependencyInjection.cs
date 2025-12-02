@@ -1,6 +1,8 @@
 using FluxPay.Core.Configuration;
+using FluxPay.Core.Services;
 using FluxPay.Infrastructure.Data;
 using FluxPay.Infrastructure.Redis;
+using FluxPay.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +41,8 @@ public static class DependencyInjection
 
         services.AddSingleton(sp => 
             new RedisConnectionFactory(redisSettings.ConnectionString));
+
+        services.AddSingleton<IEncryptionService, EncryptionService>();
 
         return services;
     }
