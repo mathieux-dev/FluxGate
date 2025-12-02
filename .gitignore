@@ -1,0 +1,15 @@
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.cache
+*.log
+.DS_Store
+appsettings.Development.json
+appsettings.*.json
+!appsettings.json
+*.db
+*.db-shm
+*.db-wal
