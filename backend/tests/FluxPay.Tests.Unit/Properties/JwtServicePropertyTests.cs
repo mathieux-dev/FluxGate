@@ -5,6 +5,8 @@ using FluxPay.Infrastructure.Data;
 using FluxPay.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
 
 namespace FluxPay.Tests.Unit.Properties;
 
@@ -250,6 +252,56 @@ public class JwtServicePropertyTests : IDisposable
                 var validatedUserId2 = service.ValidateAndConsumeRefreshTokenAsync(token2).Result;
 
                 return validatedUserId1 == null && validatedUserId2 == null;
+            }
+        ).QuickCheckThrowOnFailure();
+    }
+
+    [Property(MaxTest = 100)]
+    public void Expired_Access_Token_Should_Be_Rejected()
+    {
+        Prop.ForAll(
+            Arb.Default.Guid(),
+            (Guid userId) =>
+            {
+                var options = new DbContextOptionsBuilder<FluxPayDbContext>()
+                    .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+                    .Options;
+                using var dbContext = new FluxPayDbContext(options);
+                
+                var email = $"user{Guid.NewGuid()}@example.com";
+                
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var claims = new List<System.Security.Claims.Claim>
+                {
+                    new System.Security.Claims.Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
+                    new System.Security.Claims.Claim(JwtRegisteredClaimNames.Email, email),
+                    new System.Security.Claims.Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new System.Security.Claims.Claim("is_admin", "false")
+                };
+                
+                var privateKeyPem = Environment.GetEnvironmentVariable("JWT_PRIVATE_KEY");
+                var rsa = RSA.Create();
+                rsa.ImportFromPem(privateKeyPem);
+                var securityKey = new RsaSecurityKey(rsa);
+                
+                var now = DateTime.UtcNow;
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new System.Security.Claims.ClaimsIdentity(claims),
+                    NotBefore = now.AddMinutes(-10),
+                    Expires = now.AddSeconds(-1),
+                    SigningCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.RsaSha256),
+                    Issuer = "FluxPay",
+                    Audience = "FluxPay"
+                };
+                
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                var expiredToken = tokenHandler.WriteToken(token);
+                
+                var service = new JwtService(dbContext, _encryptionService);
+                var validatedUserId = service.ValidateAccessTokenAsync(expiredToken).Result;
+                
+                return validatedUserId == null;
             }
         ).QuickCheckThrowOnFailure();
     }
