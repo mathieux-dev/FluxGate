@@ -43,6 +43,7 @@ public static class DependencyInjection
             new RedisConnectionFactory(redisSettings.ConnectionString));
 
         services.AddSingleton<IEncryptionService, EncryptionService>();
+        services.AddSingleton<INonceStore, NonceStore>();
 
         return services;
     }
