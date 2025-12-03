@@ -47,6 +47,7 @@ public static class DependencyInjection
         services.AddSingleton<IHmacSignatureService, HmacSignatureService>();
         services.AddSingleton<IRateLimiter, RateLimiter>();
         services.AddScoped<IJwtService, JwtService>();
+        services.AddScoped<IAuditService, AuditService>();
 
         return services;
     }

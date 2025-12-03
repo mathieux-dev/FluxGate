@@ -44,11 +44,18 @@ public class HmacSignatureService : IHmacSignatureService
             throw new ArgumentException("Signature cannot be null or empty", nameof(signature));
         }
 
-        var computedSignature = ComputeSignature(secret, message);
-        
-        var computedBytes = Convert.FromBase64String(computedSignature);
-        var providedBytes = Convert.FromBase64String(signature);
-        
-        return CryptographicOperations.FixedTimeEquals(computedBytes, providedBytes);
+        try
+        {
+            var computedSignature = ComputeSignature(secret, message);
+            
+            var computedBytes = Convert.FromBase64String(computedSignature);
+            var providedBytes = Convert.FromBase64String(signature);
+            
+            return CryptographicOperations.FixedTimeEquals(computedBytes, providedBytes);
+        }
+        catch (FormatException)
+        {
+            return false;
+        }
     }
 }
