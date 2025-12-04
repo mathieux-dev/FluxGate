@@ -11,4 +11,9 @@ public static class MiddlewareExtensions
     {
         return builder.UseMiddleware<JwtAuthenticationMiddleware>();
     }
+
+    public static IApplicationBuilder UseRateLimiting(this IApplicationBuilder builder)
+    {
+        return builder.UseMiddleware<RateLimitingMiddleware>();
+    }
 }
