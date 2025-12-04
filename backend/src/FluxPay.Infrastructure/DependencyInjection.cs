@@ -52,9 +52,11 @@ public static class DependencyInjection
         services.AddScoped<IAuditService, AuditService>();
         services.AddScoped<IPaymentService, PaymentService>();
         services.AddScoped<ISubscriptionService, SubscriptionService>();
+        services.AddScoped<IWebhookService, WebhookService>();
 
         services.AddHttpClient<PagarMeAdapter>();
         services.AddHttpClient<GerencianetAdapter>();
+        services.AddHttpClient();
         services.AddScoped<IProviderFactory, ProviderFactory>();
 
         return services;
