@@ -50,6 +50,7 @@ public static class DependencyInjection
         services.AddSingleton<IRateLimiter, RateLimiter>();
         services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<IAuditService, AuditService>();
+        services.AddScoped<IPaymentService, PaymentService>();
 
         services.AddHttpClient<PagarMeAdapter>();
         services.AddHttpClient<GerencianetAdapter>();
