@@ -91,6 +91,7 @@ public class FluxPayDbContext : DbContext
             entity.Property(e => e.ProviderPaymentId).HasMaxLength(255);
             entity.Property(e => e.ProviderPayload).HasColumnType("jsonb");
             entity.Property(e => e.Metadata).HasColumnType("jsonb");
+            entity.Property(e => e.IsTest).IsRequired();
             entity.Property(e => e.CreatedAt).IsRequired();
             entity.Property(e => e.UpdatedAt).IsRequired();
             
@@ -121,6 +122,7 @@ public class FluxPayDbContext : DbContext
             entity.Property(e => e.AmountCents).IsRequired();
             entity.Property(e => e.ProviderTxId).HasMaxLength(255);
             entity.Property(e => e.Payload).HasColumnType("jsonb");
+            entity.Property(e => e.IsTest).IsRequired();
             entity.Property(e => e.CreatedAt).IsRequired();
             
             entity.HasOne(e => e.Payment)

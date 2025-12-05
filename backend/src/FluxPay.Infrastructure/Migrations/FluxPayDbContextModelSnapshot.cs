@@ -271,6 +271,9 @@ namespace FluxPay.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<bool>("IsTest")
+                        .HasColumnType("boolean");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -404,6 +407,9 @@ namespace FluxPay.Infrastructure.Migrations
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<bool>("IsTest")
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
