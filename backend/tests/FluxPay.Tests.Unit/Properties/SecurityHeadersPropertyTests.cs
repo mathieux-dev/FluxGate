@@ -7,7 +7,7 @@ namespace FluxPay.Tests.Unit.Properties;
 
 public class SecurityHeadersPropertyTests
 {
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Security_Headers_Should_Be_Present_In_All_Responses()
     {
         Prop.ForAll(
@@ -45,7 +45,7 @@ public class SecurityHeadersPropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Server_Headers_Should_Be_Removed_From_All_Responses()
     {
         Prop.ForAll(

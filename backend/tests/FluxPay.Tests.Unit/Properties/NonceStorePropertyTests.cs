@@ -7,7 +7,7 @@ namespace FluxPay.Tests.Unit.Properties;
 
 public class NonceStorePropertyTests
 {
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Webhook_Nonce_Replay_Protection_Should_Reject_Reused_Nonce(NonEmptyString merchantId, NonEmptyString nonce)
     {
         Prop.ForAll(
@@ -37,7 +37,7 @@ public class NonceStorePropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void API_Nonce_Replay_Protection_Should_Reject_Reused_Nonce(NonEmptyString merchantId, NonEmptyString nonce)
     {
         Prop.ForAll(

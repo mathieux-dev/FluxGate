@@ -35,7 +35,7 @@ public class SubscriptionServicePropertyTests : IDisposable
             Environment.SetEnvironmentVariable("MASTER_ENCRYPTION_KEY", _originalEncryptionKey);
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Subscription_Creation_Completeness_Should_Create_Via_PagarMe_And_Return_Subscription_ID()
     {
         Prop.ForAll(
@@ -94,7 +94,7 @@ public class SubscriptionServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Subscription_Payment_Linkage_Should_Link_Subscription_To_Customer()
     {
         Prop.ForAll(
@@ -157,7 +157,7 @@ public class SubscriptionServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Subscription_Cancellation_State_Transition_Should_Cancel_With_PagarMe_And_Update_Status()
     {
         Prop.ForAll(

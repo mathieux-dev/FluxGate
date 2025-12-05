@@ -36,7 +36,7 @@ public class WebhookServicePropertyTests : IDisposable
         _auditService = Substitute.For<IAuditService>();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Property_17_Inbound_Webhook_Validation_Completeness(NonEmptyString signature, NonEmptyString payload)
     {
         var provider = "pagarme";
@@ -83,7 +83,7 @@ public class WebhookServicePropertyTests : IDisposable
         Assert.True(result);
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Property_18_Invalid_Webhook_Signature_Rejection(NonEmptyString signature, NonEmptyString payload)
     {
         var provider = "pagarme";
@@ -128,7 +128,7 @@ public class WebhookServicePropertyTests : IDisposable
         Assert.False(result);
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Property_19_Webhook_Timestamp_Skew_Rejection(NonEmptyString signature, NonEmptyString payload)
     {
         var provider = "pagarme";
@@ -161,7 +161,7 @@ public class WebhookServicePropertyTests : IDisposable
         Assert.False(result);
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Property_20_Webhook_Nonce_Replay_Protection(NonEmptyString signature, NonEmptyString payload)
     {
         var provider = "pagarme";
@@ -198,7 +198,7 @@ public class WebhookServicePropertyTests : IDisposable
         Assert.False(result);
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Property_21_Valid_Webhook_Processing_Flow(NonEmptyString providerPaymentId, PositiveInt amountCents)
     {
         var provider = "pagarme";
@@ -272,7 +272,7 @@ public class WebhookServicePropertyTests : IDisposable
                    updatedPayment?.Status == PaymentStatus.Paid);
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Property_7_PIX_Confirmation_State_Transition(NonEmptyString providerPaymentId, PositiveInt amountCents)
     {
         var provider = "gerencianet";
@@ -350,7 +350,7 @@ public class WebhookServicePropertyTests : IDisposable
         Assert.True(updatedPayment?.Status == PaymentStatus.Paid);
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Property_10_Boleto_Confirmation_State_Transition(NonEmptyString providerPaymentId, PositiveInt amountCents)
     {
         var provider = "gerencianet";

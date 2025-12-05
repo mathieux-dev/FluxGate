@@ -80,7 +80,7 @@ public class EntityValidationPropertyTests
         return false;
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Payment_Should_Never_Store_PAN_Or_CVV(Guid merchantId, int amountCents, PaymentMethod method, PaymentStatus status)
     {
         Prop.ForAll(

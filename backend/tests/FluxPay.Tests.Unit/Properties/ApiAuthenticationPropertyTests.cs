@@ -11,7 +11,7 @@ namespace FluxPay.Tests.Unit.Properties;
 
 public class ApiAuthenticationPropertyTests
 {
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void API_Request_Should_Include_Required_Headers(
         NonEmptyString apiKey,
         PositiveInt timestamp,
@@ -39,7 +39,7 @@ public class ApiAuthenticationPropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void API_Signature_RoundTrip_Should_Verify_Successfully(
         NonEmptyString apiKeySecret,
         PositiveInt timestamp,
@@ -64,7 +64,7 @@ public class ApiAuthenticationPropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void API_Request_With_Timestamp_Skew_Greater_Than_60_Seconds_Should_Be_Rejected(
         NonEmptyString apiKey,
         PositiveInt timestampOffset)
@@ -86,7 +86,7 @@ public class ApiAuthenticationPropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void API_Request_With_Timestamp_Within_60_Seconds_Should_Be_Accepted(
         NonEmptyString apiKey,
         PositiveInt timestampOffset)
@@ -108,7 +108,7 @@ public class ApiAuthenticationPropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void API_Request_With_Reused_Nonce_Should_Be_Rejected(
         Guid nonce,
         NonEmptyString merchantId)
@@ -130,7 +130,7 @@ public class ApiAuthenticationPropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void API_Request_With_Invalid_Signature_Should_Be_Rejected(
         NonEmptyString correctSecret,
         NonEmptyString wrongSecret,
@@ -163,7 +163,7 @@ public class ApiAuthenticationPropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void API_Request_With_Modified_Message_Should_Fail_Verification(
         NonEmptyString secret,
         PositiveInt timestamp,

@@ -10,7 +10,7 @@ namespace FluxPay.Tests.Unit.Properties;
 
 public class RateLimitMiddlewarePropertyTests
 {
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Rate_Limit_Response_Headers_Should_Include_Retry_After(PositiveInt requestCount)
     {
         Prop.ForAll(

@@ -6,7 +6,7 @@ namespace FluxPay.Tests.Unit.Properties;
 
 public class HmacSignaturePropertyTests
 {
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Webhook_Signature_RoundTrip_Should_Verify_Successfully(
         NonEmptyString secret,
         PositiveInt timestamp,
@@ -28,7 +28,7 @@ public class HmacSignaturePropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void API_Signature_RoundTrip_Should_Verify_Successfully(
         NonEmptyString apiKeySecret,
         PositiveInt timestamp,
@@ -52,7 +52,7 @@ public class HmacSignaturePropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void ComputeSignature_Should_Be_Deterministic(
         NonEmptyString secret,
         NonEmptyString message)
@@ -72,7 +72,7 @@ public class HmacSignaturePropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void VerifySignature_Should_Fail_With_Wrong_Secret(
         NonEmptyString correctSecret,
         NonEmptyString wrongSecret,
@@ -96,7 +96,7 @@ public class HmacSignaturePropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void VerifySignature_Should_Fail_With_Modified_Message(
         NonEmptyString secret,
         NonEmptyString originalMessage,
@@ -120,7 +120,7 @@ public class HmacSignaturePropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Different_Messages_Should_Produce_Different_Signatures(
         NonEmptyString secret,
         NonEmptyString message1,

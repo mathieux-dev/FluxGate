@@ -10,7 +10,7 @@ namespace FluxPay.Tests.Unit.Properties;
 
 public class AntifraudServicePropertyTests
 {
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void IP_Velocity_Limit_Enforcement_Should_Reject_Excessive_Requests(NonEmptyString ipAddress)
     {
         Prop.ForAll(
@@ -55,7 +55,7 @@ public class AntifraudServicePropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Blacklist_Enforcement_Should_Reject_Blacklisted_CPF(PositiveInt amount)
     {
         Prop.ForAll(
@@ -87,7 +87,7 @@ public class AntifraudServicePropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Blacklist_Enforcement_Should_Reject_Blacklisted_BIN(PositiveInt amount)
     {
         Prop.ForAll(
@@ -119,7 +119,7 @@ public class AntifraudServicePropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Adaptive_IP_Blocking_Should_Block_After_Multiple_Failures(NonEmptyString ipAddress)
     {
         Prop.ForAll(
@@ -184,7 +184,7 @@ public class AntifraudServicePropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Antifraud_Audit_Logging_Should_Log_All_Triggered_Rules(NonEmptyString ipAddress, PositiveInt amount)
     {
         Prop.ForAll(

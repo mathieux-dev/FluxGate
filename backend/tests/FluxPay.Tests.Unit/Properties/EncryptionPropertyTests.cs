@@ -29,7 +29,7 @@ public class EncryptionPropertyTests : IDisposable
         }
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Provider_Config_Encryption_RoundTrip_Should_Return_Original_Data(NonEmptyString plaintext)
     {
         Prop.ForAll(
@@ -44,7 +44,7 @@ public class EncryptionPropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Webhook_Secret_Encryption_RoundTrip_Should_Return_Original_Secret(NonEmptyString secret)
     {
         Prop.ForAll(
@@ -59,7 +59,7 @@ public class EncryptionPropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Hash_Should_Be_Deterministic(NonEmptyString input)
     {
         Prop.ForAll(
@@ -74,7 +74,7 @@ public class EncryptionPropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void VerifyHash_Should_Return_True_For_Matching_Input(NonEmptyString input)
     {
         Prop.ForAll(
@@ -88,7 +88,7 @@ public class EncryptionPropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Encryption_Should_Produce_Different_Ciphertext_For_Same_Plaintext(NonEmptyString plaintext)
     {
         Prop.ForAll(

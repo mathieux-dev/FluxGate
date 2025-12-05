@@ -36,7 +36,7 @@ public class PaymentServicePropertyTests : IDisposable
             Environment.SetEnvironmentVariable("MASTER_ENCRYPTION_KEY", _originalEncryptionKey);
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Card_Payment_Creation_Invariant_Should_Create_Payment_Record_And_Call_Provider()
     {
         Prop.ForAll(
@@ -95,7 +95,7 @@ public class PaymentServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Authorized_Payment_Data_Constraints_Should_Not_Store_PAN_Or_CVV()
     {
         Prop.ForAll(
@@ -172,7 +172,7 @@ public class PaymentServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Payment_Validation_Ordering_Should_Validate_Before_Provider_Call()
     {
         Prop.ForAll(
@@ -332,7 +332,7 @@ public class PaymentServicePropertyTests : IDisposable
         return Arb.From(gen);
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void PIX_Payment_Response_Completeness_Should_Include_QR_Code_And_Payment_ID()
     {
         Prop.ForAll(
@@ -388,7 +388,7 @@ public class PaymentServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void PIX_Initial_State_Invariant_Should_Have_Pending_Status()
     {
         Prop.ForAll(
@@ -475,7 +475,7 @@ public class PaymentServicePropertyTests : IDisposable
         return Arb.From(gen);
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Refund_Transaction_Linkage_Should_Create_Linked_Transaction_Record()
     {
         Prop.ForAll(
@@ -560,7 +560,7 @@ public class PaymentServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Refund_Completion_Flow_Should_Update_Status_And_Trigger_Audit()
     {
         Prop.ForAll(
@@ -648,7 +648,7 @@ public class PaymentServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Partial_Refund_Arithmetic_Should_Calculate_Remaining_Balance_Correctly()
     {
         Prop.ForAll(

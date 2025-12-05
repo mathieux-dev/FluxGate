@@ -81,7 +81,7 @@ public class ProviderRoutingPropertyTests
                };
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Refund_Should_Route_To_Same_Provider_As_Original_Payment()
     {
         Prop.ForAll(

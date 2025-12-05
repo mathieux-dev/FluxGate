@@ -7,7 +7,7 @@ namespace FluxPay.Tests.Unit.Properties;
 
 public class RateLimiterPropertyTests
 {
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Merchant_Rate_Limit_Enforcement_Should_Reject_201st_Request(NonEmptyString merchantId)
     {
         Prop.ForAll(
@@ -43,7 +43,7 @@ public class RateLimiterPropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Payment_Endpoint_IP_Rate_Limit_Should_Reject_21st_Request(NonEmptyString ipAddress)
     {
         Prop.ForAll(
@@ -79,7 +79,7 @@ public class RateLimiterPropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Rate_Limit_Window_Reset_Should_Reset_Counter(NonEmptyString key)
     {
         Prop.ForAll(

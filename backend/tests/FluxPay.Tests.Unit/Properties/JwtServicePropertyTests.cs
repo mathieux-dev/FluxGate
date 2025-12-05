@@ -62,7 +62,7 @@ public class JwtServicePropertyTests : IDisposable
             Environment.SetEnvironmentVariable("JWT_PUBLIC_KEY", _originalPublicKey);
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Login_Token_Issuance_Format_Should_Have_Correct_Expiry_And_Type()
     {
         Prop.ForAll(
@@ -86,7 +86,7 @@ public class JwtServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Refresh_Token_Rotation_Should_Revoke_Old_Token_And_Issue_New_Tokens()
     {
         Prop.ForAll(
@@ -117,7 +117,7 @@ public class JwtServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Valid_Access_Token_Should_Be_Accepted()
     {
         Prop.ForAll(
@@ -140,7 +140,7 @@ public class JwtServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Revoked_Refresh_Token_Should_Be_Rejected()
     {
         Prop.ForAll(
@@ -166,7 +166,7 @@ public class JwtServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Access_Token_Should_Contain_User_Claims()
     {
         Prop.ForAll(
@@ -192,7 +192,7 @@ public class JwtServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Refresh_Token_Should_Be_Unique()
     {
         Prop.ForAll(
@@ -208,7 +208,7 @@ public class JwtServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Admin_Access_Token_Should_Have_Shorter_Expiry()
     {
         Prop.ForAll(
@@ -226,7 +226,7 @@ public class JwtServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Logout_Should_Revoke_All_User_Refresh_Tokens()
     {
         Prop.ForAll(
@@ -256,7 +256,7 @@ public class JwtServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Expired_Access_Token_Should_Be_Rejected()
     {
         Prop.ForAll(

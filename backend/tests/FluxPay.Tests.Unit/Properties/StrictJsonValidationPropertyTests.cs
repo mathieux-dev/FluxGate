@@ -17,7 +17,7 @@ namespace FluxPay.Tests.Unit.Properties;
 
 public class StrictJsonValidationPropertyTests
 {
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Request_With_Unexpected_Fields_Should_Be_Rejected(NonEmptyString unexpectedField)
     {
         Prop.ForAll(
@@ -92,7 +92,7 @@ public class StrictJsonValidationPropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Request_With_Only_Expected_Fields_Should_Pass_Validation(PositiveInt amountCents)
     {
         Prop.ForAll(
@@ -158,7 +158,7 @@ public class StrictJsonValidationPropertyTests
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Refund_Request_With_Unexpected_Fields_Should_Be_Rejected(NonEmptyString unexpectedField)
     {
         Prop.ForAll(

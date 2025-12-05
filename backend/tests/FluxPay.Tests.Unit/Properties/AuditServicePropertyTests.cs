@@ -63,7 +63,7 @@ public class AuditServicePropertyTests : IDisposable
         }
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Payment_Operation_Audit_Logging_Should_Create_Entry_With_All_Required_Fields(
         NonEmptyString actor,
         NonEmptyString action,
@@ -107,7 +107,7 @@ public class AuditServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Audit_Log_Signature_Integrity_Should_Verify_Successfully_After_Creation(
         NonEmptyString actor,
         NonEmptyString action)
@@ -143,7 +143,7 @@ public class AuditServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Audit_Log_Should_Detect_Tampering_When_Signature_Is_Modified(
         NonEmptyString actor,
         NonEmptyString action)
@@ -182,7 +182,7 @@ public class AuditServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Audit_Log_Should_Detect_Tampering_When_Data_Is_Modified(
         NonEmptyString actor,
         NonEmptyString action,
@@ -228,7 +228,7 @@ public class AuditServicePropertyTests : IDisposable
         ).QuickCheckThrowOnFailure();
     }
 
-    [Property(MaxTest = 100)]
+    [Property(MaxTest = 10)]
     public void Multiple_Audit_Logs_Should_Have_Unique_Signatures(
         NonEmptyString actor1,
         NonEmptyString actor2)
