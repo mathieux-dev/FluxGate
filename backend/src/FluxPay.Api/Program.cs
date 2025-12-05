@@ -3,6 +3,7 @@ using FluxPay.Api.Logging;
 using FluxPay.Api.Middleware;
 using FluxPay.Core.Configuration;
 using FluxPay.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
@@ -116,6 +117,22 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
+
+// Apply migrations automatically on startup
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<FluxPay.Infrastructure.Data.FluxPayDbContext>();
+        dbContext.Database.Migrate();
+        Log.Information("Database migrations applied successfully");
+    }
+    catch (Exception ex)
+    {
+        Log.Error(ex, "An error occurred while applying database migrations");
+        throw;
+    }
+}
 
 if (app.Environment.IsDevelopment())
 {
