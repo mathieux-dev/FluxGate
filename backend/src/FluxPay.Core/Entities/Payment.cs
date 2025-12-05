@@ -12,6 +12,7 @@ public class Payment
     public string? ProviderPaymentId { get; set; }
     public string? ProviderPayload { get; set; }
     public string? Metadata { get; set; }
+    public bool IsTest { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     

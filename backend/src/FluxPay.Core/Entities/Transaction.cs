@@ -9,6 +9,7 @@ public class Transaction
     public long AmountCents { get; set; }
     public string? ProviderTxId { get; set; }
     public string? Payload { get; set; }
+    public bool IsTest { get; set; }
     public DateTime CreatedAt { get; set; }
     
     public Payment Payment { get; set; } = null!;
