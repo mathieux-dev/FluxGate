@@ -39,6 +39,10 @@ services:
       ASPNETCORE_URLS: http://+:8080
       Database__ConnectionString: "Host=postgres;Database=fluxpay;Username=postgres;Password=postgres"
       Redis__ConnectionString: "redis:6379"
+      MASTER_ENCRYPTION_KEY: "dev-key-32-chars-min-for-aes256"
+      JWT__Secret: "dev-jwt-secret-key-min-32-chars-for-security"
+      JWT__Issuer: "FluxPay"
+      JWT__Audience: "FluxPay"
     ports:
       - "5001:8080"
     depends_on:
